@@ -1,7 +1,7 @@
 
 const http = require('http');
 
-checkServerHealth = (url) => {
+function checkServerHealth(url){
     return new Promise((resolve, reject) => {
         const start = Date.now();
         http.get(url, (res) => {
@@ -17,4 +17,4 @@ checkServerHealth = (url) => {
 
     module.exports = {
         checkServerHealth
-    }
+    };
