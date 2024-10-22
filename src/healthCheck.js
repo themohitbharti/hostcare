@@ -4,11 +4,13 @@ const http = require('http');
 function checkServerHealth(url){
     return new Promise((resolve, reject) => {
         const start = Date.now();
-        http.get(url, (res) => {
+        const req = http.get(url, (res) => {
             const duration = Date.now() - start;
             const isHealthy = res.statusCode === 200;
             resolve({ isHealthy, duration, statusCode: res.statusCode });
-        }).on('error', (err) => {
+        });
+
+        req.on('error', (err) => {
             reject(err);
         });
     });
