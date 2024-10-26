@@ -15,6 +15,10 @@ Hostcare is a command-line tool designed to help you monitor server health, simu
 - [Examples](#examples)
 - [License](#license)
 
+
+---
+
+
 ## Features
 
 ### 1. Server Health Check
@@ -86,21 +90,21 @@ After installation, you can use Hostcare commands as follows:
 
 1. **Checking Server Health**
     
-bash
+```bash
     hostcare healthcheck http://example.com
-
+```
 
 2. **Running a Load Test**
     
-bash
+```bash
     hostcare loadtest http://example.com 100
-
+```
 
 3. **Displaying System Metrics**
     
-bash
+```bash
     hostcare metrics
-
+```
 
 ## License
 
