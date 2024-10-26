@@ -1,89 +1,95 @@
 
-# HostCare
+# Hostcare
 
-**HostCare** is a command-line tool designed to monitor and test the health, load, and system metrics of servers. It provides easy access to critical information like server health status, load test summaries, and system resource usage in a clean, tabular format.
+Hostcare is a command-line tool designed to help you monitor server health, simulate load testing, and gather system metrics efficiently. With a user-friendly interface, Hostcare enables developers and system administrators to ensure their servers are running optimally.
 
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Health Check](#health-check)
-  - [Load Testing](#load-testing)
-  - [System Metrics](#system-metrics)
-- [Examples](#examples)
-- [License](#license)
+## Features
 
----
+### 1. Server Health Check
+- **Description**: This feature allows you to check the health of a server by sending an HTTP request to a specified URL. It reports the server's status, HTTP status code, response time, and a timestamp.
+- **Usage**: 
+    ```bash
+    hostcare healthcheck <url>
+    ```
+
+### 2. Load Testing
+- **Description**: Simulate load on your server by sending multiple requests simultaneously. This feature helps you understand how your server handles high traffic and identifies potential performance bottlenecks.
+- **Usage**:
+    ```bash
+    hostcare loadtest <url> <requestCount>
+    ```
+
+### 3. System Metrics
+- **Description**: Gather and display essential system metrics, such as uptime, load averages, memory usage, and more. This helps you monitor your server's performance and resource consumption.
+- **Usage**:
+    ```bash
+    hostcare metrics
+    ```
 
 ## Installation
 
-To install **HostCare**, clone this repository and install the dependencies:
+To install Hostcare, you can use npm. There are two ways to install:
+
+### Option 1: Global Installation
+This option makes the `hostcare` command available from any directory in your terminal.
 
 ```bash
-git clone <repository_url>
-cd hostcare
-npm install
+npm install -g hostcare
 ```
 
-Once installed, you can run `hostcare` directly from the command line.
+### Option 2: Local Installation
+If you prefer to install Hostcare locally within a project, use the following command:
+
+```bash
+npm install hostcare
+```
+
+To use the command after local installation, prefix it with `npx` everytime you use it:
+
+```bash
+npx hostcare <command>
+```
 
 ## Usage
 
-Run `hostcare` with the following command structure:
+After installation, you can use Hostcare commands as follows:
 
-```bash
-node hostcare <command> <arguments>
-```
+- For server health checks:
+    ```bash
+    hostcare health <url>
+    ```
 
-### Commands:
+- For load testing:
+    ```bash
+    hostcare load <url> <requestCount>
+    ```
 
-- **Health Check**: Check if a server is online and receiving requests.
-  ```bash
-  node hostcare healthcheck <url>
-  ```
-  Example:
-  ```bash
-  node hostcare healthcheck http://example.com
-  ```
+- For system metrics:
+    ```bash
+    hostcare metrics
+    ```
 
-- **Load Testing**: Simulate multiple requests to test server load capacity.
-  ```bash
-  node hostcare loadtest <url> <requestCount>
-  ```
-  Example:
-  ```bash
-  node hostcare loadtest http://example.com 100
-  ```
-
-- **System Metrics**: Display system metrics like uptime, memory usage, and CPU load averages.
-  ```bash
-  node hostcare metrics
-  ```
-
-### Available Commands
-
-| Command       | Description                              |
-|---------------|------------------------------------------|
-| `healthcheck` | Check if a server is healthy.            |
-| `loadtest`    | Simulate a number of requests to a URL.  |
-| `metrics`     | Show system-level metrics.               |
 
 ## Examples
 
 1. **Checking Server Health**
-    ```bash
-    node hostcare healthcheck http://example.com
-    ```
+    
+bash
+    hostcare healthcheck http://example.com
+
 
 2. **Running a Load Test**
-    ```bash
-    node hostcare loadtest http://example.com 100
-    ```
+    
+bash
+    hostcare loadtest http://example.com 100
+
 
 3. **Displaying System Metrics**
-    ```bash
-    node hostcare metrics
-    ```
+    
+bash
+    hostcare metrics
+
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more information.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

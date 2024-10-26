@@ -34,9 +34,9 @@ async function run() {
             default:
                 console.log('Usage: hostcare <command>\n');
                 console.log('Commands:');
-                console.log('  check-server <url>               Check the health of a server');
-                console.log('  simulate-load <url> <count>      Simulate load with multiple requests');
-                console.log('  system-metrics                   Display system metrics');
+                console.log('  healthcheck <url>               Check the health of a server');
+                console.log('  loadtest <url> <count>          Simulate load with multiple requests');
+                console.log('  metrics                         Display system metrics');
                 break;
         }
     } catch (error) {
