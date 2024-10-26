@@ -3,6 +3,18 @@
 
 Hostcare is a command-line tool designed to help you monitor server health, simulate load testing, and gather system metrics efficiently. With a user-friendly interface, Hostcare enables developers and system administrators to ensure their servers are running optimally.
 
+## Table of Contents
+- [Features](#features)
+  - [1. Server Health Check](#1-server-health-check)
+  - [2. Load Testing](#2-load-testing)
+  - [3. System Metrics](#3-system-metrics)
+- [Installation](#installation)
+  - [Option 1: Global Installation](#option-1-global-installation)
+  - [Option 2: Local Installation](#option-2-local-installation)
+- [Usage](#usage)
+- [Examples](#examples)
+- [License](#license)
+
 ## Features
 
 ### 1. Server Health Check
