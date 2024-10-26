@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mohit Bharti",
   "license": "ISC",
   "devDependencies": {
     "jest": "^29.7.0"

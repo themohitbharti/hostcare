@@ -9,7 +9,7 @@ const [,, command, ...args] = process.argv;
 async function run() {
     try {
         switch (command) {
-            case 'check-server':
+            case 'healthcheck':
                 if (args.length < 1) {
                     console.log('Usage: hostcare check-server <url>');
                     return;
@@ -18,7 +18,7 @@ async function run() {
                 const health = await checkServerHealth(url);
                 break;
 
-            case 'simulate-load':
+            case 'loadtest':
                 if (args.length < 2) {
                     console.log('Usage: hostcare simulate-load <url> <requestCount>');
                     return;
@@ -27,7 +27,7 @@ async function run() {
                 const loadResult = await simulateLoad(loadUrl, Number(requestCount));
                 break;
 
-            case 'system-metrics':
+            case 'metrics':
                 const metrics = getSystemMetrics();
                 break;
 

@@ -1,99 +1,89 @@
-# Health Check and Load Testing Utility
 
-## Overview
+# HostCare
 
-The **Health Check and Load Testing Utility** is a Node.js application designed to monitor the health of your web servers and perform load testing. It provides functions to check the health of a server, simulate concurrent requests, and gather system metrics, making it an essential tool for developers and system administrators who want to ensure their services are running smoothly and efficiently.
+**HostCare** is a command-line tool designed to monitor and test the health, load, and system metrics of servers. It provides easy access to critical information like server health status, load test summaries, and system resource usage in a clean, tabular format.
 
 ## Table of Contents
-
-- [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Functions](#functions)
-  - [checkServerHealth(url)](#checkserverhealthurl)
-  - [simulateLoad(url, requestCount)](#simulateloadurl-requestcount)
-  - [getSystemMetrics()](#getsystemmetrics)
-- [Example](#example)
-- [Contributing](#contributing)
+  - [Health Check](#health-check)
+  - [Load Testing](#load-testing)
+  - [System Metrics](#system-metrics)
+- [Examples](#examples)
 - [License](#license)
 
-## Features
-
-- **Server Health Checks**: Monitor the health status of your server with detailed response time and status information.
-- **Load Testing**: Simulate multiple requests to assess server performance under load.
-- **System Metrics**: Gather and display important system metrics, including memory usage and uptime.
-- **Dynamic Imports**: Use modern JavaScript features to handle dependencies like `chalk` and `table` dynamically.
-- **Support for HTTP and HTTPS**: Works seamlessly with both protocols for flexible server monitoring.
+---
 
 ## Installation
 
-To get started, clone the repository and install the necessary dependencies:
+To install **HostCare**, clone this repository and install the dependencies:
 
 ```bash
-git clone https://github.com/themohitbharti/hostcare.git
-cd your-repo-name
+git clone <repository_url>
+cd hostcare
 npm install
 ```
 
-Ensure you have Node.js installed on your machine. This utility is compatible with Node.js version 14 and above.
+Once installed, you can run `hostcare` directly from the command line.
 
 ## Usage
 
-To use the utility, you can import the functions into your Node.js application. Below are examples of how to use each function.
+Run `hostcare` with the following command structure:
 
-### Functions
-
-#### `checkServerHealth(url)`
-
-Checks the health of a server by sending an HTTP/HTTPS GET request to the specified URL. It returns a summary of the server's status, response time, and HTTP status code.
-
-**Parameters:**
-- `url` (String): The URL of the server to check.
-
-**Returns:**
-- A promise that resolves to an object containing `isHealthy`, `duration`, and `statusCode`.
-
-#### `simulateLoad(url, requestCount)`
-
-Simulates a specified number of requests to a server to test its load handling capabilities. It summarizes the results, indicating how many requests were successful and how many failed.
-
-**Parameters:**
-- `url` (String): The URL of the server to test.
-- `requestCount` (Number): The number of requests to simulate.
-
-**Returns:**
-- A promise that resolves when all requests have been processed.
-
-#### `getSystemMetrics()`
-
-Retrieves and formats system metrics, including uptime, memory usage, and load averages.
-
-**Returns:**
-- An object containing formatted system metrics.
-
-## Example
-
-```javascript
-const { checkServerHealth, simulateLoad, getSystemMetrics } = require('./path/to/your/module');
-
-// Check server health
-checkServerHealth('http://example.com')
-    .then(result => console.log(result))
-    .catch(error => console.error(error));
-
-// Simulate load
-simulateLoad('http://example.com', 100)
-    .then(() => console.log('Load test completed'));
-
-// Get system metrics
-const metrics = getSystemMetrics();
-console.log(metrics);
+```bash
+node hostcare <command> <arguments>
 ```
 
-## Contributing
+### Commands:
 
-Contributions are welcome! Please submit a pull request or open an issue to discuss your changes.
+- **Health Check**: Check if a server is online and receiving requests.
+  ```bash
+  node hostcare healthcheck <url>
+  ```
+  Example:
+  ```bash
+  node hostcare healthcheck http://example.com
+  ```
+
+- **Load Testing**: Simulate multiple requests to test server load capacity.
+  ```bash
+  node hostcare loadtest <url> <requestCount>
+  ```
+  Example:
+  ```bash
+  node hostcare loadtest http://example.com 100
+  ```
+
+- **System Metrics**: Display system metrics like uptime, memory usage, and CPU load averages.
+  ```bash
+  node hostcare metrics
+  ```
+
+### Available Commands
+
+| Command       | Description                              |
+|---------------|------------------------------------------|
+| `healthcheck` | Check if a server is healthy.            |
+| `loadtest`    | Simulate a number of requests to a URL.  |
+| `metrics`     | Show system-level metrics.               |
+
+## Examples
+
+1. **Checking Server Health**
+    ```bash
+    node hostcare healthcheck http://example.com
+    ```
+
+2. **Running a Load Test**
+    ```bash
+    node hostcare loadtest http://example.com 100
+    ```
+
+3. **Displaying System Metrics**
+    ```bash
+    node hostcare metrics
+    ```
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License. See the LICENSE file for more information.
