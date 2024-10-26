@@ -16,7 +16,6 @@ async function run() {
                 }
                 const url = args[0];
                 const health = await checkServerHealth(url);
-                console.log('Server Health:', health);
                 break;
 
             case 'simulate-load':
@@ -30,7 +29,6 @@ async function run() {
 
             case 'system-metrics':
                 const metrics = getSystemMetrics();
-                console.log('System Metrics:', metrics);
                 break;
 
             default:

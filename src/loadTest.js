@@ -1,6 +1,9 @@
 const http = require('http');
+const { table } = require('table');
 
-function simulateLoad(url, requestCount) {
+async function simulateLoad(url, requestCount) {
+    const chalk = await import('chalk');
+
     const promises = [];
     for (let i = 0; i < requestCount; i++) {
         promises.push(
@@ -33,13 +36,18 @@ function simulateLoad(url, requestCount) {
             { successful: 0, failed: 0, errors: [] }
         );
 
-        console.log('Load Test Summary:');
-        console.log(`Total Requests: ${requestCount}`);
-        console.log(`Successful Requests: ${summary.successful}`);
-        console.log(`Failed Requests: ${summary.failed}`);
+        const summaryTable = [
+            ['Total Requests', requestCount],
+            ['Successful Requests', summary.successful],
+            ['Failed Requests', summary.failed],
+        ];
+
         if (summary.errors.length) {
-            console.log('Errors:', summary.errors);
+            summaryTable.push(['Errors', summary.errors.join(', ')]);
         }
+
+        console.log(chalk.default.blue('Load Test Summary:'));
+        console.log(table(summaryTable.map(row => row.map(cell => chalk.default.white(cell)))));
     });
 }
 
