@@ -11,7 +11,21 @@ function checkServerHealth(url){
         });
 
         req.on('error', (err) => {
-            reject(err);
+            req.destroy();
+            if (err.code === 'ENOTFOUND') {
+                reject(new Error('Invalid URL: Unable to resolve hostname'));
+            } else {
+                reject(new Error(`Network Error: ${err.message}`));
+            }
+        });
+
+        req.on('timeout', () => {
+            req.destroy();
+            reject(new Error('Server is not responding: Request timed out'));
+        });
+
+        req.on('close', () => {
+            resolve({ isHealthy: false, duration: Date.now() - start, statusCode: 0 });
         });
     });
     }
