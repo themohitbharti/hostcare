@@ -1,17 +1,21 @@
 {
   "name": "hostcare",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A command-line tool for monitoring server health and performance.",
+  "main": "cli.js",
   "bin": {
     "hostcare": "./cli.js"
   },
   "scripts": {
     "test": "jest"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/themohitbharti/hostcare.git"
+},
+  "keywords": ["healthcheck", "load testing", "performance monitoring"],
   "author": "Mohit Bharti",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "jest": "^29.7.0"
   },
