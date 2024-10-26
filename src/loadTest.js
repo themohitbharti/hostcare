@@ -1,4 +1,5 @@
 const http = require('http');
+const https = require('https');
 const { table } = require('table');
 
 async function simulateLoad(url, requestCount) {
@@ -8,7 +9,9 @@ async function simulateLoad(url, requestCount) {
     for (let i = 0; i < requestCount; i++) {
         promises.push(
             new Promise((resolve, reject) => {
-                const req = http.get(url, (res) => {
+                const request = url.startsWith('https://') ? https.get : http.get;
+
+                const req = request(url, (res) => {
                     res.on('data', () => {});
                     res.on('end', () => resolve({ statusCode: res.statusCode }));
                 });

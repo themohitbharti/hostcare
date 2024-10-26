@@ -1,4 +1,5 @@
 const http = require('http');
+const https = require('https');
 const { table } = require('table');
 
 async function checkServerHealth(url) {
@@ -8,7 +9,9 @@ async function checkServerHealth(url) {
         const start = Date.now();
         let isResolved = false;
 
-        const req = http.get(url, (res) => {
+        const request = url.startsWith('https://') ? https.get : http.get;
+
+        const req = request(url, (res) => {
             const duration = Date.now() - start;
             const isHealthy = res.statusCode === 200;
 
